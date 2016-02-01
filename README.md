@@ -8,5 +8,4 @@
 ### Instalación ###
 
 * Este proyecto no contiene las librerías de OpenCV ya que al incluirlas el tamaño del repositorio asciende a 600 mb.
-* Se deben agregar de forma manual:
-1. 
+* Se deben agregar de forma manual.
