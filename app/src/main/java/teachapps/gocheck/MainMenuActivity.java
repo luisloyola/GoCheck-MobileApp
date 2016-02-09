@@ -1,12 +1,12 @@
 package teachapps.gocheck;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends Activity {
 
     private static final String TAG = "MainMenuActivity";
     private Button mCrearEvaluacionButton;
@@ -15,13 +15,34 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button mRevisarEvaluacionButton;
     private Button mMisCursosButton;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
+        initMainMenu();
+    }
+
+    private void initMainMenu() {
+        this.mCrearEvaluacionButton     = (Button) findViewById(R.id.button_crear_evaluacion);
+        this.mCrearPautaButton          = (Button) findViewById(R.id.button_crear_pauta);
+        this.mEvaluacionesCreadasButton = (Button) findViewById(R.id.button_evaluaciones_creadas);
+        this.mRevisarEvaluacionButton   = (Button) findViewById(R.id.button_revisar_evaluaciones);
+        this.mMisCursosButton           = (Button) findViewById(R.id.button_mis_cursos);
+
+        this.mCrearEvaluacionButton.setOnClickListener(new onClickCrearEvaluacionButton());
+        this.mCrearPautaButton.setOnClickListener(new onClickCrearPautaButton());
+        this.mEvaluacionesCreadasButton.setOnClickListener(new onClickEvaluacionesCreadasButton());
+        this.mRevisarEvaluacionButton.setOnClickListener(new onClickRevisarEvaluacionButton());
+        this.mMisCursosButton.setOnClickListener(new onClickMisCursosButton());
+    }
+
     class onClickCrearEvaluacionButton implements View.OnClickListener {
         onClickCrearEvaluacionButton() {
 
         }
 
         public void onClick(View v){
-            //MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, CrearEvaluacionActivity.class));
+            MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, CrearEvaluacionActivity.class));
         }
     }
 
@@ -63,26 +84,5 @@ public class MainMenuActivity extends AppCompatActivity {
         public void onClick(View v){
             //MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, MisCursosActivity.class));
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-        initMainMenu();
-    }
-
-    private void initMainMenu() {
-        this.mCrearEvaluacionButton     = (Button) findViewById(R.id.button_crear_evaluacion);
-        this.mCrearPautaButton          = (Button) findViewById(R.id.button_crear_pauta);
-        this.mEvaluacionesCreadasButton = (Button) findViewById(R.id.button_evaluaciones_creadas);
-        this.mRevisarEvaluacionButton   = (Button) findViewById(R.id.button_revisar_evaluaciones);
-        this.mMisCursosButton           = (Button) findViewById(R.id.button_mis_cursos);
-
-        this.mCrearEvaluacionButton.setOnClickListener(new onClickCrearEvaluacionButton());
-        this.mCrearPautaButton.setOnClickListener(new onClickCrearPautaButton());
-        this.mEvaluacionesCreadasButton.setOnClickListener(new onClickEvaluacionesCreadasButton());
-        this.mRevisarEvaluacionButton.setOnClickListener(new onClickRevisarEvaluacionButton());
-        this.mMisCursosButton.setOnClickListener(new onClickMisCursosButton());
     }
 }

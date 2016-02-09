@@ -15,14 +15,14 @@
         android:layout_height="wrap_content"
         android:text="Crear evaluación"
         android:id="@+id/button_crear_evaluacion"
+        android:layout_marginBottom="43dp"
         android:layout_above="@+id/button_crear_pauta"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crear_pauta"
+        android:text="Crear pauta"
         android:id="@+id/button_crear_pauta"
         android:layout_marginBottom="36dp"
         android:layout_above="@+id/button_evaluaciones_creadas"
