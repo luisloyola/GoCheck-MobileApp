@@ -27,10 +27,13 @@ public class CrearEvaluacionActivity extends Activity {
     private EditText mTextFieldCantidadFormas;
     private Button mNextButton;
 
+    DatabaseHelper DBHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_evaluacion);
+        DBHelper = new DatabaseHelper(this);
         initCrearEvaluacion();
     }
 
