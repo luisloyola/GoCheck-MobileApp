@@ -82,10 +82,10 @@ public class CrearEvaluacionActivity extends Activity {
                                 mTextFieldCantidadFormas.getText().toString()
                         );
                         if(isInserted){
-                            Toast.makeText(CrearEvaluacionActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            Toast.makeText(CrearEvaluacionActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
