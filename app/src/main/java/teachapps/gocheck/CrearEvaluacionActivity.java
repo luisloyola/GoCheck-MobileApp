@@ -1,7 +1,9 @@
 package teachapps.gocheck;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class CrearEvaluacionActivity extends Activity {
     private EditText mTextFieldNotaAprobacion;
     private EditText mTextFieldCantidadFormas;
     private Button mNextButton;
+    private Button mAtrasButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,17 @@ public class CrearEvaluacionActivity extends Activity {
         this.mTextViewCantidadFormas     = (TextView) findViewById(R.id.textview_cantidad_formas);
 
         this.mNextButton = (Button) findViewById(R.id.button_next);
+        this.mAtrasButton = (Button) findViewById(R.id.button_atras);
+        this.mAtrasButton.setOnClickListener(new onClickmAtrasButton());
 
+    }
+    class onClickmAtrasButton implements View.OnClickListener {
+        onClickmAtrasButton() {
+
+        }
+
+        public void onClick(View v){
+            CrearEvaluacionActivity.this.startActivity(new Intent(CrearEvaluacionActivity.this, MainMenuActivity.class));
+        }
     }
 }

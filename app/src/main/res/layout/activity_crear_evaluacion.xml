@@ -15,9 +15,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textview_nombre"
         android:text="Nombre:"
+        android:focusable="false"
+        android:textColor="#000000"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +28,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Curso:"
         android:id="@+id/textview_curso"
-        android:layout_below="@+id/text_nombre"
+        android:textColor="#000000"
+        android:layout_alignBaseline="@+id/text_curso"
+        android:layout_alignBottom="@+id/text_curso"
         android:layout_alignLeft="@+id/textview_cantidad_formas"
         android:layout_alignStart="@+id/textview_cantidad_formas" />
 
@@ -35,20 +40,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Asignatura:"
         android:id="@+id/textview_asignatura"
-        android:layout_alignTop="@+id/text_asignatura"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="#000000"
+        android:layout_alignBaseline="@+id/text_asignatura"
+        android:layout_alignBottom="@+id/text_asignatura"
+        android:layout_alignLeft="@+id/textview_curso"
+        android:layout_alignStart="@+id/textview_curso" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_nombre"
-        android:text="Ingrese nombre"
-        android:layout_alignTop="@+id/textview_nombre"
-        android:layout_toRightOf="@+id/textview_exigencia"
-        android:layout_toEndOf="@+id/textview_exigencia"
-        android:layout_marginLeft="39dp"
-        android:layout_marginStart="39dp" />
+        android:hint="Ingrese nombre"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/text_curso"
+        android:layout_alignStart="@+id/text_curso"
+        android:layout_alignRight="@+id/text_exigencia"
+        android:layout_alignEnd="@+id/text_exigencia" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,20 +63,23 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nivel de exigencia:"
         android:id="@+id/textview_exigencia"
-        android:layout_below="@+id/text_asignatura"
-        android:layout_alignLeft="@+id/textview_curso"
-        android:layout_alignStart="@+id/textview_curso" />
+        android:textColor="#000000"
+        android:layout_alignBaseline="@+id/text_exigencia"
+        android:layout_alignBottom="@+id/text_exigencia"
+        android:layout_alignLeft="@+id/textview_asignatura"
+        android:layout_alignStart="@+id/textview_asignatura" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Calificación mínima"
+        android:text="Calificación mínima:"
         android:id="@+id/textview_calificacion_min"
-        android:layout_below="@+id/textview_exigencia"
+        android:textColor="#000000"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/text_exigencia"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,8 +87,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Calificación máxima:"
         android:id="@+id/textview_calificacion_max"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/textview_calificacion_min"
+        android:textColor="#000000"
+        android:layout_alignBottom="@+id/text_calificacion_max"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -88,10 +98,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nota aprobación:"
         android:id="@+id/textview_nota_aprobacion"
+        android:textColor="#000000"
         android:layout_below="@+id/textview_calificacion_max"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,19 +110,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Cantidad de formas:"
         android:id="@+id/textview_cantidad_formas"
-        android:layout_below="@+id/textview_nota_aprobacion"
-        android:layout_alignRight="@+id/textview_calificacion_max"
-        android:layout_alignEnd="@+id/textview_calificacion_max"
-        android:layout_marginTop="33dp" />
+        android:textColor="#000000"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/text_nota_aprobacion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_curso"
-        android:layout_alignTop="@+id/textview_curso"
-        android:layout_alignLeft="@+id/text_nombre"
-        android:layout_alignStart="@+id/text_nombre"
-        android:text="Ingrese curso" />
+        android:hint="Ingrese curso"
+        android:layout_below="@+id/text_nombre"
+        android:layout_alignLeft="@+id/text_asignatura"
+        android:layout_alignStart="@+id/text_asignatura"
+        android:layout_alignRight="@+id/text_asignatura"
+        android:layout_alignEnd="@+id/text_asignatura" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -119,10 +133,14 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/text_exigencia"
-        android:layout_alignTop="@+id/textview_exigencia"
-        android:layout_alignLeft="@+id/text_curso"
-        android:layout_alignStart="@+id/text_curso"
-        android:text="10" />
+        android:hint="10"
+
+        android:layout_below="@+id/text_asignatura"
+        android:gravity="center_horizontal"
+        android:layout_alignRight="@+id/text_calificacion_max"
+        android:layout_alignEnd="@+id/text_calificacion_max"
+        android:layout_alignLeft="@+id/text_calificacion_max"
+        android:layout_alignStart="@+id/text_calificacion_max" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -130,10 +148,13 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/text_calificacion_min"
-        android:layout_alignTop="@+id/textview_calificacion_min"
-        android:layout_alignLeft="@+id/text_exigencia"
-        android:layout_alignStart="@+id/text_exigencia"
-        android:text="1.0" />
+        android:hint="1.0"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/text_calificacion_max"
+        android:layout_alignLeft="@+id/text_calificacion_max"
+        android:layout_alignStart="@+id/text_calificacion_max"
+        android:layout_alignRight="@+id/text_exigencia"
+        android:layout_alignEnd="@+id/text_exigencia" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -141,10 +162,11 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/text_calificacion_max"
-        android:layout_alignTop="@+id/textview_calificacion_max"
-        android:layout_alignLeft="@+id/text_calificacion_min"
-        android:layout_alignStart="@+id/text_calificacion_min"
-        android:text="7.0" />
+        android:hint="7.0"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textview_calificacion_max"
+        android:layout_toEndOf="@+id/textview_calificacion_max" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -152,12 +174,11 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/text_nota_aprobacion"
-        android:layout_below="@+id/text_calificacion_max"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/text_calificacion_max"
-        android:layout_alignStart="@+id/text_calificacion_max"
-        android:text="4.0" />
+        android:hint="4.0"
+        android:gravity="center_horizontal"
+        android:layout_toRightOf="@+id/textview_calificacion_max"
+        android:layout_toEndOf="@+id/textview_calificacion_max"
+        android:layout_alignBottom="@+id/textview_nota_aprobacion" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -165,19 +186,22 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/text_cantidad_formas"
-        android:layout_alignTop="@+id/textview_cantidad_formas"
+        android:hint="2"
+        android:gravity="center_horizontal"
+        android:layout_alignBottom="@+id/textview_cantidad_formas"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/text_calificacion_max"
-        android:layout_alignStart="@+id/text_calificacion_max"
-        android:text="2" />
+        android:layout_alignLeft="@+id/text_nota_aprobacion"
+        android:layout_alignStart="@+id/text_nota_aprobacion" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_asignatura"
-        android:text="Ingrese asignatura"
+        android:hint="Ingrese asignatura"
         android:layout_below="@+id/text_curso"
+        android:layout_alignLeft="@+id/text_exigencia"
+        android:layout_alignStart="@+id/text_exigencia"
         android:layout_alignRight="@+id/text_exigencia"
         android:layout_alignEnd="@+id/text_exigencia" />
 
@@ -189,5 +213,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atrás"
+        android:id="@+id/button_atras"
+        android:layout_alignTop="@+id/button_next"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
