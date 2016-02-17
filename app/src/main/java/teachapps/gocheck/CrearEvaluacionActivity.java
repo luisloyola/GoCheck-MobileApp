@@ -1,4 +1,4 @@
-﻿package teachapps.gocheck;
+package teachapps.gocheck;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -124,7 +124,7 @@ public class CrearEvaluacionActivity extends Activity {
                         }
 
                         //Insert values
-                        Boolean isInserted = DBHelper.insertEvaluacion(
+                        Long insertedID = DBHelper.insertEvaluacion(
                                 Nombre,
                                 Curso,
                                 Asignatura,
