@@ -1,4 +1,4 @@
-package teachapps.gocheck;
+﻿package teachapps.gocheck;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -86,6 +86,7 @@ public class CrearEvaluacionActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         //get values
                         String Nombre = mTextFieldNombre.getText().toString();
                         String Curso = mTextFieldCurso.getText().toString();
@@ -133,7 +134,7 @@ public class CrearEvaluacionActivity extends Activity {
                                 NotaAprobacion,
                                 CantidadFormas
                         );
-                        if(isInserted){
+                        if(insertedID != -1){
                             Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
                         }
                         else {
