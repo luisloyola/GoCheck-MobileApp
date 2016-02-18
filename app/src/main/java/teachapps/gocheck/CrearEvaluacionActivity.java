@@ -32,6 +32,7 @@ public class CrearEvaluacionActivity extends Activity {
     private Button mAtrasButton;
 
     DatabaseHelper DBHelper;
+    private Boolean isCreatingPauta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,10 @@ public class CrearEvaluacionActivity extends Activity {
         initCrearEvaluacion();
         DBHelper = new DatabaseHelper(this);
         AddData();
+
+        //Obtener datos del activity anterior
+        Bundle bundleRecibido = getIntent().getExtras();
+        isCreatingPauta = bundleRecibido.getBoolean("isCreatingPauta");
     }
 
     private void initCrearEvaluacion() {
