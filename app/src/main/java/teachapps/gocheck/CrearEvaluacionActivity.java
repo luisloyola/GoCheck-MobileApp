@@ -84,6 +84,7 @@ public class CrearEvaluacionActivity extends Activity {
 
         @Override
         public void onClick(View v){
+            //Insertar evaluación en DB
             //get values
             String Nombre = mTextFieldNombre.getText().toString();
             String Curso = mTextFieldCurso.getText().toString();
@@ -131,12 +132,31 @@ public class CrearEvaluacionActivity extends Activity {
                     NotaAprobacion,
                     CantidadFormas
             );
-            if(insertedID != -1){
-                Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
+            if(insertedID == -1) { //Error al insertar evaluación en la DB.
+                //Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
             }
-            else {
-                Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
+            else { //Evaluación insertada en la DB.
+                //Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
+                //Cargar siguiente activity
+                Intent intent;
+                if(isCreatingPauta) {
+                    intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+                }
+                else{//isCreatingEvaluation
+                    //TODO implementar CrearSeccionActivity, por mientras redirige a CrearPautaActivity
+                    //intent = new Intent(CrearEvaluacionActivity.this, CrearSeccionActivity.class);
+                    intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+                }
+
+                //Pasar datos a la activity CrearEvaluación
+                Bundle bundle = new Bundle();
+                bundle.putLong("EvaluacionID", insertedID); //isCreatingPauta = false significa que se creará una evaluación completa.
+                intent.putExtras(bundle);
+
+                //Iniciar Activity
+                CrearEvaluacionActivity.this.startActivity(intent);
             }
+
         }
     }
 
