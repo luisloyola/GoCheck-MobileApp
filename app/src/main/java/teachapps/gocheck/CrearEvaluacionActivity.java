@@ -40,7 +40,6 @@ public class CrearEvaluacionActivity extends Activity {
         setContentView(R.layout.activity_crear_evaluacion);
         initCrearEvaluacion();
         DBHelper = new DatabaseHelper(this);
-        AddData();
 
         //Obtener datos del activity anterior
         Bundle bundleRecibido = getIntent().getExtras();
@@ -71,12 +70,78 @@ public class CrearEvaluacionActivity extends Activity {
         //Buttons
         this.mNextButton = (Button) findViewById(R.id.button_next);
         this.mAtrasButton = (Button) findViewById(R.id.button_atras);
-        this.mAtrasButton.setOnClickListener(new onClickmAtrasButton());
+
+        //Set Buttons' OnClickListener
+        this.mNextButton.setOnClickListener(new onClickNextButton());
+        this.mAtrasButton.setOnClickListener(new onClickAtrasButton());
 
     }
 
-    class onClickmAtrasButton implements View.OnClickListener {
-        onClickmAtrasButton() {
+    class onClickNextButton implements View.OnClickListener {
+        onClickNextButton() {
+
+        }
+
+        @Override
+        public void onClick(View v){
+            //get values
+            String Nombre = mTextFieldNombre.getText().toString();
+            String Curso = mTextFieldCurso.getText().toString();
+            String Asignatura = mTextFieldAsignatura.getText().toString();
+            String Exigencia = mTextFieldExigencia.getText().toString();
+            String CalificacionMin = mTextFieldCalificacionMinima.getText().toString();
+            String CalificacionMax = mTextFieldCalificacionMaxima.getText().toString();
+            String NotaAprobacion = mTextFieldNotaAprobacion.getText().toString();
+            String CantidadFormas = mTextFieldCantidadFormas.getText().toString();
+
+            //verification of the values
+            if(Nombre.equals("")){
+                Nombre = mTextFieldNombre.getHint().toString();
+            }
+            if(Curso.equals("")){
+                Curso = mTextFieldCurso.getHint().toString();
+            }
+            if(Asignatura.equals("")){
+                Asignatura = mTextFieldAsignatura.getHint().toString();
+            }
+            if(Exigencia.equals("")){
+                Exigencia = mTextFieldExigencia.getHint().toString();
+            }
+            if(CalificacionMin.equals("")){
+                CalificacionMin = mTextFieldCalificacionMinima.getHint().toString();
+            }
+            if(CalificacionMax.equals("")){
+                CalificacionMax= mTextFieldCalificacionMaxima.getHint().toString();
+            }
+            if(NotaAprobacion.equals("")){
+                NotaAprobacion= mTextFieldNotaAprobacion.getHint().toString();
+            }
+            if(CantidadFormas.equals("")){
+                CantidadFormas = mTextFieldCantidadFormas.getHint().toString();
+            }
+
+            //Insert values
+            Long insertedID = DBHelper.insertEvaluacion(
+                    Nombre,
+                    Curso,
+                    Asignatura,
+                    Exigencia,
+                    CalificacionMin,
+                    CalificacionMax,
+                    NotaAprobacion,
+                    CantidadFormas
+            );
+            if(insertedID != -1){
+                Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    class onClickAtrasButton implements View.OnClickListener {
+        onClickAtrasButton() {
 
         }
 
@@ -84,70 +149,5 @@ public class CrearEvaluacionActivity extends Activity {
             CrearEvaluacionActivity.this.startActivity(new Intent(CrearEvaluacionActivity.this, MainMenuActivity.class));
         }
     }
-
-
-    public void AddData(){
-        mNextButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        //get values
-                        String Nombre = mTextFieldNombre.getText().toString();
-                        String Curso = mTextFieldCurso.getText().toString();
-                        String Asignatura = mTextFieldAsignatura.getText().toString();
-                        String Exigencia = mTextFieldExigencia.getText().toString();
-                        String CalificacionMin = mTextFieldCalificacionMinima.getText().toString();
-                        String CalificacionMax = mTextFieldCalificacionMaxima.getText().toString();
-                        String NotaAprobacion = mTextFieldNotaAprobacion.getText().toString();
-                        String CantidadFormas = mTextFieldCantidadFormas.getText().toString();
-
-                        //verification of the values
-                        if(Nombre.equals("")){
-                            Nombre = mTextFieldNombre.getHint().toString();
-                        }
-                        if(Curso.equals("")){
-                            Curso = mTextFieldCurso.getHint().toString();
-                        }
-                        if(Asignatura.equals("")){
-                            Asignatura = mTextFieldAsignatura.getHint().toString();
-                        }
-                        if(Exigencia.equals("")){
-                            Exigencia = mTextFieldExigencia.getHint().toString();
-                        }
-                        if(CalificacionMin.equals("")){
-                            CalificacionMin = mTextFieldCalificacionMinima.getHint().toString();
-                        }
-                        if(CalificacionMax.equals("")){
-                            CalificacionMax= mTextFieldCalificacionMaxima.getHint().toString();
-                        }
-                        if(NotaAprobacion.equals("")){
-                            NotaAprobacion= mTextFieldNotaAprobacion.getHint().toString();
-                        }
-                        if(CantidadFormas.equals("")){
-                            CantidadFormas = mTextFieldCantidadFormas.getHint().toString();
-                        }
-
-                        //Insert values
-                        Long insertedID = DBHelper.insertEvaluacion(
-                                Nombre,
-                                Curso,
-                                Asignatura,
-                                Exigencia,
-                                CalificacionMin,
-                                CalificacionMax,
-                                NotaAprobacion,
-                                CantidadFormas
-                        );
-                        if(insertedID != -1){
-                            Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }
-        );
-
-    }
 }
+

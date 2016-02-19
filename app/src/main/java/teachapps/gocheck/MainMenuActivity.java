@@ -23,12 +23,14 @@ public class MainMenuActivity extends Activity {
     }
 
     private void initMainMenu() {
+        //Buttons
         this.mCrearEvaluacionButton     = (Button) findViewById(R.id.button_crear_evaluacion);
         this.mCrearPautaButton          = (Button) findViewById(R.id.button_crear_pauta);
         this.mEvaluacionesCreadasButton = (Button) findViewById(R.id.button_evaluaciones_creadas);
         this.mRevisarEvaluacionButton   = (Button) findViewById(R.id.button_revisar_evaluaciones);
         this.mMisCursosButton           = (Button) findViewById(R.id.button_mis_cursos);
 
+        //Set Buttons' OnClickListener
         this.mCrearEvaluacionButton.setOnClickListener(new onClickCrearEvaluacionButton());
         this.mCrearPautaButton.setOnClickListener(new onClickCrearPautaButton());
         this.mEvaluacionesCreadasButton.setOnClickListener(new onClickEvaluacionesCreadasButton());
