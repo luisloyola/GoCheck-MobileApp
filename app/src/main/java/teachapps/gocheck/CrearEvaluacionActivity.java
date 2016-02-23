@@ -133,10 +133,10 @@ public class CrearEvaluacionActivity extends Activity {
                     CantidadFormas
             );
             if(insertedID == -1) { //Error al insertar evaluación en la DB.
-                //Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
+                Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
             }
             else { //Evaluación insertada en la DB.
-                //Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
+                Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
                 //Cargar siguiente activity
                 Intent intent;
                 if(isCreatingPauta) {
