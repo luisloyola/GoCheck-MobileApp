@@ -23,12 +23,14 @@ public class MainMenuActivity extends Activity {
     }
 
     private void initMainMenu() {
+        //Buttons
         this.mCrearEvaluacionButton     = (Button) findViewById(R.id.button_crear_evaluacion);
         this.mCrearPautaButton          = (Button) findViewById(R.id.button_crear_pauta);
         this.mEvaluacionesCreadasButton = (Button) findViewById(R.id.button_evaluaciones_creadas);
         this.mRevisarEvaluacionButton   = (Button) findViewById(R.id.button_revisar_evaluaciones);
         this.mMisCursosButton           = (Button) findViewById(R.id.button_mis_cursos);
 
+        //Set Buttons' OnClickListener
         this.mCrearEvaluacionButton.setOnClickListener(new onClickCrearEvaluacionButton());
         this.mCrearPautaButton.setOnClickListener(new onClickCrearPautaButton());
         this.mEvaluacionesCreadasButton.setOnClickListener(new onClickEvaluacionesCreadasButton());
@@ -42,7 +44,15 @@ public class MainMenuActivity extends Activity {
         }
 
         public void onClick(View v){
-            MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, CrearEvaluacionActivity.class));
+            Intent intent = new Intent(MainMenuActivity.this, CrearEvaluacionActivity.class);
+
+            //Pasar datos a la activity CrearEvaluación
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isCreatingPauta", false); //isCreatingPauta = false significa que se creará una evaluación completa.
+
+            intent.putExtras(bundle);
+            //Iniciar Activity
+            MainMenuActivity.this.startActivity(intent);
         }
     }
 
@@ -52,7 +62,15 @@ public class MainMenuActivity extends Activity {
         }
 
         public void onClick(View v){
-            //MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, CrearPautaActivity.class));
+            Intent intent = new Intent(MainMenuActivity.this, CrearEvaluacionActivity.class);
+
+            //Pasar datos a la activity CrearEvaluación
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isCreatingPauta", true); //isCreatingPauta = true significa que solo se creará la pauta de una evaluación.
+
+            intent.putExtras(bundle);
+            //Iniciar Activity
+            MainMenuActivity.this.startActivity(intent);
         }
     }
 
