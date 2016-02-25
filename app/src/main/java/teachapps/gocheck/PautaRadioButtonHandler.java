@@ -37,6 +37,17 @@ public class PautaRadioButtonHandler {
     void check(int row, int buttonNumber){
         this.mButtons.get(row).check(buttonNumber);
     }
+
+    int[] getChecked() throws FaltaAlternativaCorrectaPautaException {
+        int respuestas[] = new int[numberOfRows];
+        for(int i=0; i<numberOfRows; i++){
+            respuestas[i] = mButtons.get(i).getChecked();
+            if(respuestas[i] == -1){
+                throw (new FaltaAlternativaCorrectaPautaException(i));
+            }
+        }
+        return respuestas;
+    }
 }
 
 /**
@@ -82,6 +93,15 @@ class PautaRadioButtons{
         for(int i=0; i<numberOfButtons; i++){
             this.radioButtonsList.get(i).setChecked(false);
         }
+    }
+
+    int getChecked(){
+        for(int i=0; i<numberOfButtons; i++){
+            if(radioButtonsList.get(i).isChecked()){
+                return i;
+            }
+        }
+        return -1;
     }
 }
 
