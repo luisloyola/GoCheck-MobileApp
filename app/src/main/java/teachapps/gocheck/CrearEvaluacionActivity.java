@@ -96,15 +96,28 @@ public class CrearEvaluacionActivity extends Activity {
             String CantidadFormas = mTextFieldCantidadFormas.getText().toString();
 
             //verification of the values
+            boolean flagNoValidValues = false;
+            String msg = "Debe indicar ";
             if(Nombre.equals("")){
-                Nombre = mTextFieldNombre.getHint().toString();
+                flagNoValidValues = true;
+                msg += "nombre";
             }
             if(Curso.equals("")){
-                Curso = mTextFieldCurso.getHint().toString();
+                if(flagNoValidValues){
+                    msg += ", ";
+                }
+                msg += "curso";
+                flagNoValidValues = true;
             }
             if(Asignatura.equals("")){
-                Asignatura = mTextFieldAsignatura.getHint().toString();
+                if(flagNoValidValues){
+                    msg += " y ";
+                }
+                msg += "asignatura";
+                flagNoValidValues = true;
             }
+            msg += " para la evaluación";
+
             if(Exigencia.equals("")){
                 Exigencia = mTextFieldExigencia.getHint().toString();
             }
@@ -121,42 +134,47 @@ public class CrearEvaluacionActivity extends Activity {
                 CantidadFormas = mTextFieldCantidadFormas.getHint().toString();
             }
 
-            //Insert values
-            Long insertedID = DBHelper.insertEvaluacion(
-                    Nombre,
-                    Curso,
-                    Asignatura,
-                    Exigencia,
-                    CalificacionMin,
-                    CalificacionMax,
-                    NotaAprobacion,
-                    CantidadFormas
-            );
-            if(insertedID == -1) { //Error al insertar evaluación en la DB.
-                Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
-            }
-            else { //Evaluación insertada en la DB.
-                Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
-                //Cargar siguiente activity
-                Intent intent;
-                if(isCreatingPauta) {
-                    intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+            if(flagNoValidValues == false){ //Valores válidos para crear la evaluación.
+                //Insert values
+                Long insertedID = DBHelper.insertEvaluacion(
+                        Nombre,
+                        Curso,
+                        Asignatura,
+                        Exigencia,
+                        CalificacionMin,
+                        CalificacionMax,
+                        NotaAprobacion,
+                        CantidadFormas
+                );
+
+                if (insertedID == -1) { //Error al insertar evaluación en la DB.
+                    Toast.makeText(CrearEvaluacionActivity.this, "Error: No se pudo crear la evaluación", Toast.LENGTH_LONG).show();
                 }
-                else{//isCreatingEvaluation
-                    //TODO implementar CrearSeccionActivity, por mientras redirige a CrearPautaActivity
-                    //intent = new Intent(CrearEvaluacionActivity.this, CrearSeccionActivity.class);
-                    intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+                else { //Evaluación insertada en la DB.
+                    Toast.makeText(CrearEvaluacionActivity.this, "Evaluación creada", Toast.LENGTH_LONG).show();
+
+                    //Cargar siguiente activity
+                    Intent intent;
+                    if (isCreatingPauta) {
+                        intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+                    } else {//isCreatingEvaluation
+                        //TODO implementar CrearSeccionActivity, por mientras redirige a CrearPautaActivity
+                        //intent = new Intent(CrearEvaluacionActivity.this, CrearSeccionActivity.class);
+                        intent = new Intent(CrearEvaluacionActivity.this, CrearPautaActivity.class);
+                    }
+
+                    //Pasar datos a la activity CrearEvaluación
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("EvaluacionID", insertedID); //isCreatingPauta = false significa que se creará una evaluación completa.
+                    intent.putExtras(bundle);
+
+                    //Iniciar Activity
+                    CrearEvaluacionActivity.this.startActivity(intent);
                 }
-
-                //Pasar datos a la activity CrearEvaluación
-                Bundle bundle = new Bundle();
-                bundle.putLong("EvaluacionID", insertedID); //isCreatingPauta = false significa que se creará una evaluación completa.
-                intent.putExtras(bundle);
-
-                //Iniciar Activity
-                CrearEvaluacionActivity.this.startActivity(intent);
             }
-
+            else {
+                Toast.makeText(CrearEvaluacionActivity.this, msg, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -166,7 +184,8 @@ public class CrearEvaluacionActivity extends Activity {
         }
 
         public void onClick(View v) {
-            CrearEvaluacionActivity.this.startActivity(new Intent(CrearEvaluacionActivity.this, MainMenuActivity.class));
+            Intent intent = new Intent(CrearEvaluacionActivity.this, MainMenuActivity.class);
+            CrearEvaluacionActivity.this.startActivity(intent);
         }
     }
 }
