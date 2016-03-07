@@ -43,6 +43,7 @@
         </activity>
         <activity android:name=".CrearEvaluacionActivity"></activity>
         <activity android:name=".CrearPautaActivity"></activity>
+        <activity android:name=".ElegirEvaluacionActivity"></activity>
 
     </application>
 
