@@ -44,6 +44,8 @@
         <activity android:name=".CrearEvaluacionActivity"></activity>
         <activity android:name=".CrearPautaActivity"></activity>
         <activity android:name=".ElegirEvaluacionActivity"></activity>
+        <activity android:name=".DummyCamaraActivity"></activity>
+        <activity android:name=".RevisionActivity"></activity>
 
     </application>
 
