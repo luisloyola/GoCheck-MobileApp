@@ -13,10 +13,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.07" />
 
-    <ExpandableListView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/expandableListView"
+        android:id="@+id/listView_listaEvaluaciones"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.07" />
+
 </LinearLayout>
