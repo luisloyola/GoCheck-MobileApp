@@ -87,8 +87,8 @@ public class ElegirEvaluacionActivity extends ListActivity {
         //Cargar siguiente activity
         Intent intent;
         if (isCheckingEvaluacion) {
-            intent = new Intent(ElegirEvaluacionActivity.this, DummyCamaraActivity.class);
-
+            //intent = new Intent(ElegirEvaluacionActivity.this, DummyCamaraActivity.class);
+            intent = new Intent(ElegirEvaluacionActivity.this, CamaraActivity.class);
             //Pasar datos a la activity CamaraActivity
             Bundle bundle = new Bundle();
             bundle.putLong("EvaluacionID", evaluacionID);

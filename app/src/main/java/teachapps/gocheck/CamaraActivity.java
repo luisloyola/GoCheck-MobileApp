@@ -14,7 +14,7 @@ public class CamaraActivity extends Activity {
 
     private static final String TAG = "CamaraActivity";
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    private Uri fileUri;
+    private long EvaluacionID; //ID de evaluación a revisar
 
     Button btnTakePhoto;
     ImageView imgTakePhoto;
@@ -23,6 +23,9 @@ public class CamaraActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camara);
+        //Obtener datos del activity anterior
+        Bundle bundleRecibido = getIntent().getExtras();
+        EvaluacionID = bundleRecibido.getLong("EvaluacionID");
         dispatchTakePictureIntent();
     }
 
@@ -37,7 +40,16 @@ public class CamaraActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
-            // Pasar a otra vista
+            // Pasar a vista resultados obtenidos
+
+            //Pasar datos a la activity RevisionActivity
+            Intent intent = new Intent(CamaraActivity.this, RevisionActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putLong("EvaluacionID", EvaluacionID);
+            intent.putExtras(bundle);
+
+            //Cargar siguiente Activity
+            CamaraActivity.this.startActivity(intent);
 
             //Bundle extras = data.getExtras();
             //Bitmap imageBitmap = (Bitmap) extras.get("data");
