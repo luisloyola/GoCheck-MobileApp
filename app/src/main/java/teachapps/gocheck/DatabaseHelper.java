@@ -2,6 +2,7 @@ package teachapps.gocheck;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -189,6 +190,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return insertPregunta("", "", alternativaCorrectaChar, 1, SeccionID);
     }
 
+    //Selects
+    public Cursor listEvaluaciones(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EvaluacionTableName,null);
+        return cursor;
+    }
+
+
+    //Updates
+
+    //Deletes
+
+    //Utils
     private String getCharForNumber(int i) {
         return i > 0 && i < 27 ? String.valueOf((char)(i + 97)) : null;
     }

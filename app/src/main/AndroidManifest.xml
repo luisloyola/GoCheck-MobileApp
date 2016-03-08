@@ -42,9 +42,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".CrearEvaluacionActivity" />
-        <activity android:name=".CrearPautaActivity" />
+
+        <activity android:name=".CrearEvaluacionActivity"></activity>
+        <activity android:name=".CrearPautaActivity"></activity>
+        <activity android:name=".ElegirEvaluacionActivity"></activity>
+        <activity android:name=".DummyCamaraActivity"></activity>
+        <activity android:name=".RevisionActivity"></activity>
         <activity android:name=".CamaraActivity"></activity>
+
     </application>
 
 </manifest>
