@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * Created by Luis on 08/03/2016.
  */
@@ -55,5 +58,17 @@ public class DummyCamaraActivity extends Activity {
             //Cargar siguiente Activity
             DummyCamaraActivity.this.startActivity(intent);
         }
+    }
+
+    //Dummy random results, always 20
+    private ArrayList<String> RandomRespuestas(int n) {
+        ArrayList<String> respuestas = new ArrayList<String>();
+        Random r = new Random();
+
+        String alphabet = "abcdefgh";
+        for (int i = 0; i < 20; i++) {
+            respuestas.add("" + alphabet.charAt(r.nextInt(alphabet.length())));
+        }
+        return respuestas;
     }
 }
