@@ -80,7 +80,15 @@ public class MainMenuActivity extends Activity {
         }
 
         public void onClick(View v){
-            //MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, EvaluacionesCreadasActivity.class));
+            Intent intent = new Intent(MainMenuActivity.this, ElegirEvaluacionActivity.class);
+
+            //Pasar datos a la activity ElegirEvaluación
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isCheckingEvaluacion", false); //isCheckingEvaluacion = false significa que las mostrara para luego editarlas.
+
+            intent.putExtras(bundle);
+            //Iniciar Activity
+            MainMenuActivity.this.startActivity(intent);
         }
     }
 
@@ -90,7 +98,15 @@ public class MainMenuActivity extends Activity {
         }
 
         public void onClick(View v){
-            //MainMenuActivity.this.startActivity(new Intent(MainMenuActivity.this, RevisarEvaluacionActivity.class));
+            Intent intent = new Intent(MainMenuActivity.this, ElegirEvaluacionActivity.class);
+
+            //Pasar datos a la activity ElegirEvaluación
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isCheckingEvaluacion", true); //isCheckingEvaluacion = true significa que las mostrara para revisar la evaluación
+
+            intent.putExtras(bundle);
+            //Iniciar Activity
+            MainMenuActivity.this.startActivity(intent);
         }
     }
 
