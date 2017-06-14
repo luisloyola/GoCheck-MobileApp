@@ -19,3 +19,8 @@ $ git clone https://github.com/luisloyola/GoCheck-MobileApp.git
 
 * Luego de clonar, sincronizar Gradle (esto es automático con Android Studio)
 
+
+## Licencia ##
+Licenciado bajo GNU GPLv3.
+
+Puede ver la licencia en detalle en el siguiente enlace: https://www.gnu.org/licenses/gpl-3.0.html
