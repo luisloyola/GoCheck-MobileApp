@@ -11,8 +11,9 @@ GoCheck es una aplicación que automatiza y facilita el trabajo de los profesore
 * Revisión automática de las pruebas con la cámara del dispositivo móvil
 
 ## Clonar ##
-
-* git clone https://github.com/luisloyola/GoCheck-MobileApp.git
+```sh
+$ git clone https://github.com/luisloyola/GoCheck-MobileApp.git
+```
 
 ## Instalación ##
 
